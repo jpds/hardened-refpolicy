@@ -5,6 +5,7 @@
 /usr/bin/ejabberdctl	--	gen_context(system_u:object_r:jabberd_exec_t,s0)
 /usr/bin/jabberd	--	gen_context(system_u:object_r:jabberd_exec_t,s0)
 /usr/bin/prosody	--	gen_context(system_u:object_r:jabberd_exec_t,s0)
+/usr/bin/prosodyctl	--	gen_context(system_u:object_r:jabberd_exec_t,s0)
 /usr/bin/router		--	gen_context(system_u:object_r:jabberd_router_exec_t,s0)
 /usr/bin/s2s		--	gen_context(system_u:object_r:jabberd_exec_t,s0)
 /usr/bin/sm		--	gen_context(system_u:object_r:jabberd_exec_t,s0)
