@@ -4,6 +4,13 @@ policy_module(jabber, 1.16.0)
 #
 # Declarations
 #
+## <desc>
+##      <p>
+##      Determine whether icecast can listen
+##      on and connect to any TCP port.
+##      </p>
+## </desc>
+gen_tunable(jabberd_use_any_tcp_ports, false)
 
 attribute jabberd_domain;
 
@@ -118,6 +125,13 @@ sysnet_read_config(jabberd_t)
 
 userdom_dontaudit_use_unpriv_user_fds(jabberd_t)
 userdom_dontaudit_search_user_home_dirs(jabberd_t)
+
+tunable_policy(`jabberd_use_any_tcp_ports',`
+        corenet_tcp_connect_all_ports(jabberd_t)
+        corenet_sendrecv_all_client_packets(jabberd_t)
+        corenet_tcp_bind_all_ports(jabberd_t)
+        corenet_sendrecv_all_server_packets(jabberd_t)
+')
 
 optional_policy(`
 	udev_read_db(jabberd_t)
