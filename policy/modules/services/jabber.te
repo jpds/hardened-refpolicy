@@ -84,6 +84,7 @@ manage_files_pattern(jabberd_t, jabberd_log_t, jabberd_log_t)
 logging_log_filetrans(jabberd_t, jabberd_log_t, { file dir })
 
 manage_files_pattern(jabberd_domain, jabberd_spool_t, jabberd_spool_t)
+manage_files_pattern(jabberd_t, jabberd_spool_t, jabberd_spool_t)
 files_search_var_lib(jabberd_t)
 
 manage_files_pattern(jabberd_t, jabberd_runtime_t, jabberd_runtime_t)
