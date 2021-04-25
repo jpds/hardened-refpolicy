@@ -1093,6 +1093,25 @@ interface(`logging_read_all_logs',`
 
 ########################################
 ## <summary>
+##     Watch all log files.
+## </summary>
+## <param name="domain">
+##     <summary>
+##     Domain allowed access.
+##     </summary>
+## </param>
+## <rolecap/>
+#
+interface(`logging_watch_all_logs',`
+	gen_require(`
+		attribute logfile;
+	')
+
+	allow $1 logfile:file watch;
+')
+
+########################################
+## <summary>
 ##	Execute all log files in the caller domain.
 ## </summary>
 ## <param name="domain">
