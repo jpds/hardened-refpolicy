@@ -174,6 +174,8 @@ logging_log_filetrans(portage_t, portage_log_t, file)
 
 allow portage_t { portage_fetch_t portage_sandbox_t }:process signal;
 
+allow portage_t portage_ebuild_t:file map;
+
 # transition for rsync and wget
 corecmd_shell_spec_domtrans(portage_t, portage_fetch_t)
 rsync_entry_domtrans(portage_t, portage_fetch_t)
