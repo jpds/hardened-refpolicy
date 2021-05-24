@@ -18,6 +18,7 @@ read_files_pattern(catalyst_t, catalyst_conf_t, catalyst_conf_t)
 
 manage_dirs_pattern(catalyst_t, catalyst_tmp_t, catalyst_tmp_t)
 manage_files_pattern(catalyst_t, catalyst_tmp_t, catalyst_tmp_t)
+manage_lnk_files_pattern(catalyst_t, catalyst_tmp_t, catalyst_tmp_t)
 files_tmp_filetrans(catalyst_t, catalyst_tmp_t, { file dir })
 
 corecmd_exec_bin(catalyst_t)
