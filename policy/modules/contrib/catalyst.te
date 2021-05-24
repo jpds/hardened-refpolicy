@@ -3,12 +3,18 @@ policy_module(catalyst, 1.0.0)
 type catalyst_t;
 type catalyst_exec_t;
 
+type catalyst_conf_t;
+files_config_file(catalyst_conf_t)
+
 type catalyst_tmp_t;
 files_tmp_file(catalyst_tmp_t)
 
 allow catalyst_t self:capability sys_admin;
 allow catalyst_t self:fifo_file { getattr read write };
 allow catalyst_t self:process signal;
+
+list_dirs_pattern(catalyst_t, catalyst_conf_t, catalyst_conf_t)
+read_files_pattern(catalyst_t, catalyst_conf_t, catalyst_conf_t)
 
 manage_dirs_pattern(catalyst_t, catalyst_tmp_t, catalyst_tmp_t)
 manage_files_pattern(catalyst_t, catalyst_tmp_t, catalyst_tmp_t)
