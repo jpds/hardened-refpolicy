@@ -1,0 +1,10 @@
+policy_module(catalyst, 1.0.0)
+
+type catalyst_t;
+type catalyst_exec_t;
+
+corecmd_exec_bin(catalyst_t)
+domain_use_interactive_fds(catalyst_t)
+files_read_etc_files(catalyst_t)
+userdom_use_inherited_user_terminals(catalyst_t)
+userdom_user_application_domain(catalyst_t, catalyst_exec_t)

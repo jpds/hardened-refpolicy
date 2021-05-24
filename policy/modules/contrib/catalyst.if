@@ -1,0 +1,45 @@
+## <summary>Catalyst utilities</summary>
+
+########################################
+## <summary>
+##      Execute a domain transition to run catalyst.
+## </summary>
+## <param name="domain">
+## <summary>
+##      Domain allowed to transition.
+## </summary>
+## </param>
+#
+interface(`catalyst_domtrans',`
+        gen_require(`
+		type catalyst_t, catalyst_exec_t;
+        ')
+
+        corecmd_search_bin($1)
+        domtrans_pattern($1, catalyst_exec_t, catalyst_t)
+')
+
+########################################
+## <summary>
+##      Execute catalyst in the catalyst domain, and
+##      allow the specified role the catalyst domain.
+## </summary>
+## <param name="domain">
+##      <summary>
+##      Domain allowed to transition.
+##      </summary>
+## </param>
+## <param name="role">
+##      <summary>
+##      Role allowed access.
+##      </summary>
+## </param>
+#
+interface(`catalyst_run',`
+        gen_require(`
+		type catalyst_t;
+        ')
+
+        catalyst_domtrans($1)
+        role $2 types catalyst_t;
+')
