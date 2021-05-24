@@ -15,6 +15,7 @@ manage_files_pattern(catalyst_t, catalyst_tmp_t, catalyst_tmp_t)
 files_tmp_filetrans(catalyst_t, catalyst_tmp_t, { file dir })
 
 corecmd_exec_bin(catalyst_t)
+corecmd_exec_shell(catalyst_t)
 domain_use_interactive_fds(catalyst_t)
 files_mounton_root(catalyst_t)
 files_read_etc_files(catalyst_t)
