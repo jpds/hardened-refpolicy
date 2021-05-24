@@ -9,7 +9,7 @@ files_config_file(catalyst_conf_t)
 type catalyst_tmp_t;
 files_tmp_file(catalyst_tmp_t)
 
-allow catalyst_t self:capability sys_admin;
+allow catalyst_t self:capability { chown sys_admin };
 allow catalyst_t self:fifo_file { ioctl getattr read write };
 allow catalyst_t self:process signal;
 
