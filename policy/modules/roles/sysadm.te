@@ -1281,6 +1281,10 @@ ifdef(`distro_gentoo',`
 	')
 
 	optional_policy(`
+		catalyst_run(sysadm_t, sysadm_r)
+	')
+
+	optional_policy(`
 		ceph_admin(sysadm_t, sysadm_r)
 	')
 
