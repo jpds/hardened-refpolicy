@@ -5,6 +5,14 @@ policy_module(logrotate, 1.25.1)
 # Declarations
 #
 
+## <desc>
+##      <p>
+##      Determine whether logrotate can manage
+##      audit log files
+##      </p>
+## </desc>
+gen_tunable(allow_logrotate_manage_audit_log, false)
+
 attribute_role logrotate_roles;
 roleattribute system_r logrotate_roles;
 
@@ -120,6 +128,10 @@ logging_manage_all_logs(logrotate_t)
 logging_send_syslog_msg(logrotate_t)
 logging_send_audit_msgs(logrotate_t)
 logging_exec_all_logs(logrotate_t)
+
+tunable_policy(`allow_logrotate_manage_audit_log',`
+        logging_manage_audit_log(logrotate_t)
+')
 
 miscfiles_read_generic_certs(logrotate_t)
 miscfiles_read_localization(logrotate_t)
