@@ -122,6 +122,7 @@ files_search_runtime(gcc_config_t)
 # complains loudly about not being able to list
 # the directory it is being run from
 files_list_all(gcc_config_t)
+files_write_root_dirs(gcc_config_t)
 
 # seems to be ok without this
 init_dontaudit_read_script_status_files(gcc_config_t)
