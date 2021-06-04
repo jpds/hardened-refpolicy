@@ -98,6 +98,9 @@ allow gcc_config_t self:fifo_file rw_fifo_file_perms;
 
 manage_files_pattern(gcc_config_t, portage_cache_t, portage_cache_t)
 
+manage_lnk_files_pattern(gcc_config_t, bin_t, bin_t)
+manage_lnk_files_pattern(gcc_config_t, lib_t, lib_t)
+
 read_files_pattern(gcc_config_t, portage_conf_t, portage_conf_t)
 
 allow gcc_config_t portage_ebuild_t:dir list_dir_perms;
