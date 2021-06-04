@@ -1912,6 +1912,24 @@ interface(`files_delete_root_symlinks',`
 
 ########################################
 ## <summary>
+##	Write to the root directory.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed access.
+##	</summary>
+## </param>
+#
+interface(`files_write_root_dirs',`
+	gen_require(`
+		type root_t;
+	')
+
+	allow $1 root_t:dir write;
+')
+
+########################################
+## <summary>
 ##	Do not audit attempts to write to / dirs.
 ## </summary>
 ## <param name="domain">
