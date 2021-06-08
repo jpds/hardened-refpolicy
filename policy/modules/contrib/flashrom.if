@@ -1,0 +1,46 @@
+## <summary>flashrom.</summary>
+
+########################################
+## <summary>
+##	Execute a domain transition to run flashrom.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed to transition.
+##	</summary>
+## </param>
+#
+interface(`flashrom_domtrans',`
+	gen_require(`
+		type flashrom_t, flashrom_exec_t;
+	')
+
+	corecmd_search_bin($1)
+	domtrans_pattern($1, flashrom_exec_t, flashrom_t)
+')
+
+########################################
+## <summary>
+##	Execute flashrom in the flashrom domain,
+##	and allow the specified role
+##	the flashrom domain.
+## </summary>
+## <param name="domain">
+##	<summary>
+##	Domain allowed to transition.
+##	</summary>
+## </param>
+## <param name="role">
+##	<summary>
+##	Role allowed access.
+##	</summary>
+## </param>
+#
+interface(`flashrom_run',`
+	gen_require(`
+		attribute_role flashrom_roles;
+	')
+
+	flashrom_domtrans($1)
+	roleattribute $2 flashrom_roles;
+')

@@ -1,0 +1,24 @@
+policy_module(flashrom, 1.0)
+
+attribute_role flashrom_roles;
+
+type flashrom_t;
+type flashrom_exec_t;
+
+application_domain(flashrom_t, flashrom_exec_t)
+role flashrom_roles types flashrom_t;
+
+allow flashrom_t self:capability sys_admin;
+allow flashrom_t self:lockdown integrity;
+
+dev_read_raw_memory_cond(flashrom_t, allow_raw_memory_access)
+dev_write_raw_memory_cond(flashrom_t, allow_raw_memory_access)
+dev_wx_raw_memory_cond(flashrom_t, allow_raw_memory_access)
+
+domain_use_interactive_fds(flashrom_t)
+
+kernel_read_proc_dirs(flashrom_t)
+kernel_read_proc_files(flashrom_t)
+
+userdom_read_user_home_content_files(flashrom_t)
+userdom_use_inherited_user_terminals(flashrom_t)
