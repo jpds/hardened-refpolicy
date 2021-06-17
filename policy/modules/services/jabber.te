@@ -106,6 +106,9 @@ corecmd_exec_bin(jabberd_t)
 corenet_sendrecv_jabber_client_server_packets(jabberd_t)
 corenet_tcp_bind_jabber_client_port(jabberd_t)
 
+corenet_sendrecv_jabber_http_server_packets(jabberd_t)
+corenet_tcp_bind_jabber_http_port(jabberd_t)
+
 corenet_sendrecv_jabber_interserver_server_packets(jabberd_t)
 corenet_tcp_bind_jabber_interserver_port(jabberd_t)
 corenet_tcp_connect_jabber_interserver_port(jabberd_t)
