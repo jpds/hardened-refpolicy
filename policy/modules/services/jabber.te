@@ -104,6 +104,8 @@ kernel_read_kernel_sysctls(jabberd_t)
 corecmd_exec_bin(jabberd_t)
 corecmd_exec_shell(jabberd_t)
 
+corenet_tcp_bind_epmd_port(jabberd_t)
+
 corenet_sendrecv_jabber_client_server_packets(jabberd_t)
 corenet_tcp_bind_jabber_client_port(jabberd_t)
 
