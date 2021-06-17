@@ -1,0 +1,34 @@
+policy_module(epmd, 1.0)
+
+type epmd_t;
+type epmd_etc_t;
+type epmd_exec_t;
+type epmd_runtime_t;
+
+init_daemon_domain(epmd_t, epmd_exec_t)
+
+files_runtime_file(epmd_runtime_t)
+files_runtime_filetrans(epmd_t, epmd_runtime_t, file)
+#files_runtime_search(epmd_t)
+
+allow epmd_t self:process signal;
+allow epmd_t self:fifo_file rw_fifo_file_perms;
+allow epmd_t self:tcp_socket create_stream_socket_perms;
+allow epmd_t self:unix_stream_socket { accept listen };
+
+allow epmd_t epmd_runtime_t:file manage_file_perms;
+
+corenet_all_recvfrom_netlabel(epmd_t)
+corenet_tcp_sendrecv_generic_if(epmd_t)
+corenet_tcp_sendrecv_generic_node(epmd_t)
+corenet_tcp_bind_generic_node(epmd_t)
+
+corenet_sendrecv_epmd_server_packets(epmd_t)
+corenet_tcp_bind_epmd_port(epmd_t)
+corenet_tcp_connect_epmd_port(epmd_t)
+
+files_read_etc_files(epmd_t)
+
+logging_send_syslog_msg(epmd_t)
+
+miscfiles_read_localization(epmd_t)
