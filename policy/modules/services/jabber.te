@@ -135,6 +135,8 @@ miscfiles_read_generic_tls_privkey(jabberd_t)
 miscfiles_read_all_certs(jabberd_t)
 miscfiles_read_fonts(jabberd_t)
 
+su_exec(jabberd_t)
+
 sysnet_read_config(jabberd_t)
 
 userdom_dontaudit_use_unpriv_user_fds(jabberd_t)
