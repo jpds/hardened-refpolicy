@@ -1,0 +1,58 @@
+policy_module(node_exporter, 1.0)
+
+type nodeexporter_t;
+type nodeexporter_exec_t;
+init_daemon_domain(nodeexporter_t, nodeexporter_exec_t)
+
+type nodeexporter_runtime_t;
+files_runtime_file(nodeexporter_runtime_t)
+
+type nodeexporter_var_lib_t;
+files_type(nodeexporter_var_lib_t)
+
+type nodeexporter_var_log_t;
+logging_log_file(nodeexporter_var_log_t)
+
+allow nodeexporter_t self:fifo_file rw_fifo_file_perms;
+allow nodeexporter_t self:process { getsched signal };
+allow nodeexporter_t self:tcp_socket create_stream_socket_perms;
+
+manage_files_pattern(nodeexporter_t, nodeexporter_runtime_t, nodeexporter_runtime_t)
+files_runtime_filetrans(nodeexporter_t, nodeexporter_runtime_t, file)
+
+manage_dirs_pattern(nodeexporter_t, nodeexporter_var_lib_t, nodeexporter_var_lib_t)
+manage_files_pattern(nodeexporter_t, nodeexporter_var_lib_t, nodeexporter_var_lib_t)
+files_var_lib_filetrans(nodeexporter_t, nodeexporter_var_lib_t, { file dir } )
+
+append_files_pattern(nodeexporter_t, nodeexporter_var_log_t, nodeexporter_var_log_t)
+create_files_pattern(nodeexporter_t, nodeexporter_var_log_t, nodeexporter_var_log_t)
+setattr_files_pattern(nodeexporter_t, nodeexporter_var_log_t, nodeexporter_var_log_t)
+logging_log_filetrans(nodeexporter_t, nodeexporter_var_log_t, file)
+
+corenet_tcp_bind_all_ports(nodeexporter_t)
+corenet_tcp_bind_generic_node(nodeexporter_t)
+
+dev_read_sysfs(nodeexporter_t)
+
+fs_getattr_dos_fs(nodeexporter_t)
+fs_getattr_rpc_pipefs(nodeexporter_t)
+fs_getattr_tmpfs(nodeexporter_t)
+fs_getattr_xattr_fs(nodeexporter_t)
+
+init_dbus_chat(nodeexporter_t)
+init_get_system_status(nodeexporter_t)
+init_read_state(nodeexporter_t)
+
+# Search kernel sysctl rpc attributes
+kernel_read_rpc_sysctls(nodeexporter_t)
+
+kernel_read_fs_sysctls(nodeexporter_t)
+kernel_read_kernel_sysctls(nodeexporter_t)
+kernel_read_net_sysctls(nodeexporter_t)
+kernel_read_network_state(nodeexporter_t)
+kernel_read_software_raid_state(nodeexporter_t)
+kernel_read_system_state(nodeexporter_t)
+
+optional_policy(`
+	rpc_search_nfs_state_data(nodeexporter_t)
+')

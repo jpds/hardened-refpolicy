@@ -1,0 +1,6 @@
+/run/node_exporter.pid	-- gen_context(system_u:object_r:nodeexporter_runtime_t,s0)
+
+/usr/sbin/node_exporter	-- gen_context(system_u:object_r:nodeexporter_exec_t,s0)
+
+/var/lib/node_exporter(/.*)?	gen_context(system_u:object_r:nodeexporter_var_lib_t,s0)
+/var/log/node_exporter(/.*)?	gen_context(system_u:object_r:nodeexporter_var_log_t,s0)
