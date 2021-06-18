@@ -116,6 +116,9 @@ corenet_sendrecv_jabber_interserver_server_packets(jabberd_t)
 corenet_tcp_bind_jabber_interserver_port(jabberd_t)
 corenet_tcp_connect_jabber_interserver_port(jabberd_t)
 
+corenet_sendrecv_mqtt_server_packets(jabberd_t)
+corenet_tcp_bind_mqtt_port(jabberd_t)
+
 corenet_sendrecv_stun_server_packets(jabberd_t)
 corenet_tcp_bind_stun_port(jabberd_t)
 corenet_udp_bind_stun_port(jabberd_t)
